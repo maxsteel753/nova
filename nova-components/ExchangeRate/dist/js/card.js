@@ -273,35 +273,40 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['card'],
     data: function data() {
         return {
-            rate: []
+            rate: {
+                USD: 1,
+                GBP: 3,
+                EUR: 5
+            }
         };
     },
     mounted: function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-            var r, response, data;
+            var response, data;
             return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                 while (1) {
                     switch (_context.prev = _context.next) {
                         case 0:
-                            r = this;
-                            _context.next = 3;
+                            _context.next = 2;
                             return fetch('https://api.exchangeratesapi.io/latest?base=INR');
 
-                        case 3:
+                        case 2:
                             response = _context.sent;
-                            _context.next = 6;
+                            _context.next = 5;
                             return response.json();
 
-                        case 6:
+                        case 5:
                             data = _context.sent;
 
-                            r.rate.USD = data.rates.USD;
-                            r.rate.GBP = data.rates.GBP;
-                            r.rate.EUR = data.rates.EUR;
+                            console.log(data);
+                            this.rate.USD = data.rates.USD;
+                            this.rate.GBP = data.rates.GBP;
+                            this.rate.EUR = data.rates.EUR;
 
                         case 10:
                         case 'end':

@@ -24,6 +24,7 @@
 </template>
 
 <script>
+
 export default {
     props: [
         'card',
@@ -35,16 +36,21 @@ export default {
     ],
     data : function() {
         return {
-            rate: []
+            rate: {
+                USD:1,
+                GBP:3,
+                EUR:5
+            }
         }
     },
-    computed: async function() {
-        let r= this;
+    mounted: async function() {
+        
         const response = await fetch('https://api.exchangeratesapi.io/latest?base=INR');
-        let data =  await response.json();    
-        r.rate.USD = data.rates.USD;
-        r.rate.GBP = data.rates.GBP;
-        r.rate.EUR = data.rates.EUR;
+        let data =  await response.json(); 
+        console.log(data);   
+        this.rate.USD = data.rates.USD;
+        this.rate.GBP = data.rates.GBP;
+        this.rate.EUR = data.rates.EUR;
           
     
         
